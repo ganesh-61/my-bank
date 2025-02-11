@@ -4,6 +4,21 @@ let user = {}
 // let username = "";
 // let currBalance = 0;
 document.write("<div id=root></div>");
+function showAllUsers(){
+  let str=`<h2>All Users Data</h2>`
+  if(users.length == 0){
+    str += `<p>No user Found</p>`
+  }else{
+    for(let i=0;i<users.length;i++){
+      str += `
+      <p><b>Name:</b> ${users[i].name}</p>
+      <p><b>Eami-id:</b> ${users[i].email}</p>
+      <p><b>Balance:</b> ${users[i].balance}</p>`
+    }
+  }
+  str +=`<button onclick='home()'>BACK</button>`
+  root.innerHTML = str
+}
 function showUser() {
   if (document.getElementById("type").value == "3") {
     console.log("Transfer")
@@ -55,6 +70,7 @@ function home() {
   let str = `
       <h3>Welcome ${user.name}</h3>
       <button onclick='showLogin()'>Logout</button>
+      <button onclick='showAllUsers()'>View Users</button>
       <p><select id="type" onchange='showUser()'>
          <option value=0>--Select--</option>
          <option value=1>Deposit</option>
